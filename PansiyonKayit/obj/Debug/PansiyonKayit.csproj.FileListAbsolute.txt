@@ -1,0 +1,13 @@
+c:\users\hkadir\documents\visual studio 2015\Projects\PansiyonKayit\PansiyonKayit\bin\Debug\PansiyonKayit.exe.config
+c:\users\hkadir\documents\visual studio 2015\Projects\PansiyonKayit\PansiyonKayit\bin\Debug\PansiyonKayit.exe
+c:\users\hkadir\documents\visual studio 2015\Projects\PansiyonKayit\PansiyonKayit\bin\Debug\PansiyonKayit.pdb
+c:\users\hkadir\documents\visual studio 2015\Projects\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.csprojResolveAssemblyReference.cache
+c:\users\hkadir\documents\visual studio 2015\Projects\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.Form1.resources
+c:\users\hkadir\documents\visual studio 2015\Projects\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.Properties.Resources.resources
+c:\users\hkadir\documents\visual studio 2015\Projects\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.csproj.GenerateResource.Cache
+c:\users\hkadir\documents\visual studio 2015\Projects\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.exe
+c:\users\hkadir\documents\visual studio 2015\Projects\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.pdb
+c:\users\hkadir\documents\visual studio 2015\Projects\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.FrmAdmin.resources
+C:\Users\hkdem\Desktop\PansiyonKayit\PansiyonKayit\bin\Debug\PansiyonKayit.exe.config
+C:\Users\hkdem\Desktop\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.exe
+C:\Users\hkdem\Desktop\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.pdb
