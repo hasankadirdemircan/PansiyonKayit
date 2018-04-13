@@ -1,2 +1,2 @@
 # PansiyonKayit
-Pansiyon Kayıt Uygulaması
+C# Form Pansiyon Kayıt Uygulaması
