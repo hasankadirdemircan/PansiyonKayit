@@ -32,5 +32,15 @@ namespace PansiyonKayit.Properties {
                 return ((string)(this["ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-3TC5PRO;Initial Catalog=pansiyon;Integrated Security=True")]
+        public string pansiyonConnectionString {
+            get {
+                return ((string)(this["pansiyonConnectionString"]));
+            }
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace PansiyonKayit
         {
             InitializeComponent();
         }
-        SqlConnection connection = new SqlConnection("Data Source=MSI;Initial Catalog=pansiyon;Integrated Security=True");
+        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-3TC5PRO;Initial Catalog=pansiyon;Integrated Security=True");
         private void verileriGoster()
         {
             listView1.Items.Clear();
@@ -47,7 +47,6 @@ namespace PansiyonKayit
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
-            textBox4.Clear();
             textBox5.Clear();
             textBox6.Clear();
         }
@@ -59,7 +58,11 @@ namespace PansiyonKayit
         private void button2_Click(object sender, EventArgs e)
         {
             connection.Open();
-            SqlCommand command = new SqlCommand("insert into musteriler (id,Ad,Soyad,OdaNo,GTarih,Telefon,Hesap,CTarih) values('"+textBox1.Text.ToString()+"','"+textBox2.Text.ToString()+"','"+textBox3.Text.ToString()+"','"+textBox4.Text.ToString()+"','"+dateTimePicker1.Text.ToString()+"','"+textBox5.Text.ToString()+"','"+textBox6.Text.ToString()+"','"+dateTimePicker2.Text.ToString()+"')",connection);
+            SqlCommand command = new SqlCommand("insert into musteriler (id,Ad,Soyad,OdaNo,GTarih,Telefon,Hesap,CTarih) values('"+textBox1.Text.ToString()+"','"+textBox2.Text.ToString()+"','"+textBox3.Text.ToString()+"','"+comboBox1.Text.ToString()+"','"+dateTimePicker1.Text.ToString()+"','"+textBox5.Text.ToString()+"','"+textBox6.Text.ToString()+"','"+dateTimePicker2.Text.ToString()+"')",connection);
+            command.ExecuteNonQuery();
+            command.CommandText = "insert into doluoda(doluyerler) values('" + comboBox1.Text + "')";
+            command.ExecuteNonQuery();
+            command.CommandText = ("delete from bosoda where bosyerler='" + comboBox1.Text + "'");
             command.ExecuteNonQuery();
             connection.Close();
             textBoxTemizle();
@@ -70,6 +73,10 @@ namespace PansiyonKayit
         {
             connection.Open();
             SqlCommand command = new SqlCommand("delete from musteriler where id = (" + id + ")", connection);
+            command.ExecuteNonQuery();
+            command.CommandText = "insert into bosoda(bosyerler) values('" + comboBox1.Text + "')";
+            command.ExecuteNonQuery();
+            command.CommandText = ("delete from doluoda where doluyerler='" + comboBox1.Text + "'");
             command.ExecuteNonQuery();
             connection.Close();
             textBoxTemizle();
@@ -84,7 +91,7 @@ namespace PansiyonKayit
             textBox1.Text = listView1.SelectedItems[0].SubItems[0].Text;
             textBox2.Text = listView1.SelectedItems[0].SubItems[1].Text;
             textBox3.Text = listView1.SelectedItems[0].SubItems[2].Text;
-            textBox4.Text = listView1.SelectedItems[0].SubItems[3].Text;
+            comboBox1.Text = listView1.SelectedItems[0].SubItems[3].Text;
             dateTimePicker1.Text = listView1.SelectedItems[0].SubItems[4].Text;
             textBox5.Text = listView1.SelectedItems[0].SubItems[5].Text;
             textBox6.Text = listView1.SelectedItems[0].SubItems[6].Text;
@@ -95,7 +102,7 @@ namespace PansiyonKayit
         private void button4_Click(object sender, EventArgs e)
         {
             connection.Open();
-            SqlCommand command = new SqlCommand("update musteriler set id ='" + textBox1.Text.ToString() + "',Ad='" + textBox2.Text.ToString() + "',Soyad='" + textBox3.Text.ToString() + "',OdaNo='" + textBox4.Text.ToString() + "',GTarih='" + dateTimePicker1.Text.ToString() + "',Telefon='" + textBox5.Text.ToString() + "',Hesap='" + textBox6.Text.ToString() + "',CTarih='" + dateTimePicker2.Text.ToString()+"'where id ="+id+"",connection);
+            SqlCommand command = new SqlCommand("update musteriler set id ='" + textBox1.Text.ToString() + "',Ad='" + textBox2.Text.ToString() + "',Soyad='" + textBox3.Text.ToString() + "',OdaNo='" + comboBox1.Text.ToString() + "',GTarih='" + dateTimePicker1.Text.ToString() + "',Telefon='" + textBox5.Text.ToString() + "',Hesap='" + textBox6.Text.ToString() + "',CTarih='" + dateTimePicker2.Text.ToString()+"'where id ="+id+"",connection);
             command.ExecuteNonQuery();
             connection.Close();
             verileriGoster();
@@ -127,6 +134,25 @@ namespace PansiyonKayit
             command.ExecuteNonQuery();
             SqlDataReader reader = command.ExecuteReader();
             listViewGoster(reader);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            textBox4.Text = textBox4.Text.Substring(1) + textBox4.Text.Substring(0, 1);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand("select *from bosoda", connection);
+            SqlDataReader oda = command.ExecuteReader();
+
+            while (oda.Read())
+            {
+                comboBox1.Items.Add(oda[0].ToString());
+            }
+            connection.Close();
+             
         }
     }
 }
