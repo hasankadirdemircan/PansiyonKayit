@@ -29,10 +29,28 @@ namespace PansiyonKayit
             String username;
             String password;
             String sorgu;
-            username = textBox1.Text.ToString();
-            password = textBox1.Text.ToString();
+            String kullanici = textBox1.Text;
+            String sifre = textBox2.Text;
             connection.Open();
-            //Buraya veritabanından username password kontrolu yapilacak.
+            sorgu = "select *from kullanici";
+            SqlCommand command = new SqlCommand(sorgu, connection);
+            SqlDataReader read = command.ExecuteReader();
+            if (read.Read())
+            {
+                username = read[0].ToString();
+                password = read[1].ToString();
+                if(username.Equals(kullanici) && password.Equals(sifre))
+                {
+                    Form1 form1 = new Form1();
+                    form1.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("üzgünüz kullanıcı adı veya şifre yanlış.");
+                }
+            }
+            connection.Close();
             
         }
     }

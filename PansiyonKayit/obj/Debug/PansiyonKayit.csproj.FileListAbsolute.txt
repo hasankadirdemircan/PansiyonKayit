@@ -18,3 +18,13 @@ C:\Users\hkdem\Desktop\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.Form1
 C:\Users\hkdem\Desktop\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.FrmAdmin.resources
 C:\Users\hkdem\Desktop\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.Properties.Resources.resources
 C:\Users\hkdem\Desktop\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.csproj.GenerateResource.Cache
+C:\Users\hkdem\Desktop\projeler\PansiyonKayit\PansiyonKayit\bin\Debug\PansiyonKayit.exe.config
+C:\Users\hkdem\Desktop\projeler\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.exe
+C:\Users\hkdem\Desktop\projeler\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.pdb
+C:\Users\hkdem\Desktop\projeler\PansiyonKayit\PansiyonKayit\bin\Debug\PansiyonKayit.exe
+C:\Users\hkdem\Desktop\projeler\PansiyonKayit\PansiyonKayit\bin\Debug\PansiyonKayit.pdb
+C:\Users\hkdem\Desktop\projeler\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.csprojResolveAssemblyReference.cache
+C:\Users\hkdem\Desktop\projeler\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.Form1.resources
+C:\Users\hkdem\Desktop\projeler\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.FrmAdmin.resources
+C:\Users\hkdem\Desktop\projeler\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.Properties.Resources.resources
+C:\Users\hkdem\Desktop\projeler\PansiyonKayit\PansiyonKayit\obj\Debug\PansiyonKayit.csproj.GenerateResource.Cache

@@ -47,6 +47,7 @@ namespace PansiyonKayit
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
+          
             textBox5.Clear();
             textBox6.Clear();
         }
@@ -58,7 +59,14 @@ namespace PansiyonKayit
         private void button2_Click(object sender, EventArgs e)
         {
             connection.Open();
-            SqlCommand command = new SqlCommand("insert into musteriler (id,Ad,Soyad,OdaNo,GTarih,Telefon,Hesap,CTarih) values('"+textBox1.Text.ToString()+"','"+textBox2.Text.ToString()+"','"+textBox3.Text.ToString()+"','"+comboBox1.Text.ToString()+"','"+dateTimePicker1.Text.ToString()+"','"+textBox5.Text.ToString()+"','"+textBox6.Text.ToString()+"','"+dateTimePicker2.Text.ToString()+"')",connection);
+            DateTime tarih1 = dateTimePicker1.Value; // 
+            DateTime tarih2 = dateTimePicker2.Value; //
+            TimeSpan fark = tarih2 - tarih1;
+         
+            int farkInt = Convert.ToInt32(fark.Days);
+            int hesap = farkInt * 100;
+            String hesapString = hesap.ToString() + "  TL";
+            SqlCommand command = new SqlCommand("insert into musteriler (Ad,Soyad,OdaNo,GTarih,Telefon,Hesap,CTarih) values('"+textBox2.Text.ToString()+"','"+textBox3.Text.ToString()+"','"+comboBox1.Text.ToString()+"','"+dateTimePicker1.Text.ToString()+"','"+textBox5.Text.ToString()+"','"+ hesapString.ToString()+"','"+dateTimePicker2.Text.ToString()+"')",connection);
             command.ExecuteNonQuery();
             command.CommandText = "insert into doluoda(doluyerler) values('" + comboBox1.Text + "')";
             command.ExecuteNonQuery();
@@ -67,6 +75,7 @@ namespace PansiyonKayit
             connection.Close();
             textBoxTemizle();
             verileriGoster();
+            comboBoxGuncelle();
         }
         int id = 0;
         private void button3_Click(object sender, EventArgs e)
@@ -81,6 +90,7 @@ namespace PansiyonKayit
             connection.Close();
             textBoxTemizle();
             verileriGoster();
+            comboBoxGuncelle();
 
         }
 
@@ -102,7 +112,7 @@ namespace PansiyonKayit
         private void button4_Click(object sender, EventArgs e)
         {
             connection.Open();
-            SqlCommand command = new SqlCommand("update musteriler set id ='" + textBox1.Text.ToString() + "',Ad='" + textBox2.Text.ToString() + "',Soyad='" + textBox3.Text.ToString() + "',OdaNo='" + comboBox1.Text.ToString() + "',GTarih='" + dateTimePicker1.Text.ToString() + "',Telefon='" + textBox5.Text.ToString() + "',Hesap='" + textBox6.Text.ToString() + "',CTarih='" + dateTimePicker2.Text.ToString()+"'where id ="+id+"",connection);
+            SqlCommand command = new SqlCommand("update musteriler set Ad='" + textBox2.Text.ToString() + "',Soyad='" + textBox3.Text.ToString() + "',OdaNo='" + comboBox1.Text.ToString() + "',GTarih='" + dateTimePicker1.Text.ToString() + "',Telefon='" + textBox5.Text.ToString() + "',Hesap='" + textBox6.Text.ToString() + "',CTarih='" + dateTimePicker2.Text.ToString()+"'where id ="+id+"",connection);
             command.ExecuteNonQuery();
             connection.Close();
             verileriGoster();
@@ -141,10 +151,17 @@ namespace PansiyonKayit
             textBox4.Text = textBox4.Text.Substring(1) + textBox4.Text.Substring(0, 1);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+
+        private void comboBoxTemizle()
         {
+            comboBox1.Items.Clear();
+        }
+
+        private void comboBoxGuncelle()
+        {
+            comboBoxTemizle();
             connection.Open();
-            SqlCommand command = new SqlCommand("select *from bosoda", connection);
+            SqlCommand command = new SqlCommand("select *from bosoda order by bosyerler", connection);
             SqlDataReader oda = command.ExecuteReader();
 
             while (oda.Read())
@@ -152,7 +169,12 @@ namespace PansiyonKayit
                 comboBox1.Items.Add(oda[0].ToString());
             }
             connection.Close();
-             
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            comboBoxGuncelle();
+        }
+
     }
 }
